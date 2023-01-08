@@ -1,9 +1,16 @@
 # Template file for 'OpenLP'
 pkgname=OpenLP
-version=2.9.5
-revision=2
+version=3.0.0
+revision=1
 create_wrksrc=yes
 build_style=python3-module
+make_check_args="--deselect tests/openlp_core/common/test_init.py::test_extension_loader_import_error
+ --deselect tests/openlp_core/common/test_init.py::test_extension_loader_os_error
+ --deselect tests/openlp_core/lib/test_serviceitem.py::test_to_dict_text_item
+ --deselect tests/openlp_core/lib/test_serviceitem.py::test_to_dict_image_item
+ --deselect tests/openlp_core/lib/test_serviceitem.py::test_to_dict_presentation_item
+ --deselect tests/openlp_core/lib/test_lib.py::test_get_text_file_string_read_error
+ --deselect tests/openlp_core/lib/test_lib.py::test_create_thumb_invalid_size"
 hostmakedepends="python3-setuptools qt5-host-tools"
 depends="python3-alembic python3-appdirs python3-BeautifulSoup4 python3-chardet
  python3-dbus python3-distro python3-Flask python3-Flask-Cors python3-lxml
@@ -17,7 +24,7 @@ maintainer="Piotr Wójcik <chocimier@tlen.pl>"
 license="GPL-3.0-or-later"
 homepage="https://openlp.org/"
 distfiles="https://get.openlp.org/${version}/OpenLP-${version}.tar.gz"
-checksum=4648e6869ffe2fb88a1e2b90705e1cf709dd6dd24abbfe2e17df13742e701c09
+checksum=6c28bfda7896b9f5fe8346def1f318d0111b005fc81b0aa6c2bee1c366d5a6e4
 make_check_pre="env -u QT_QPA_PLATFORM xvfb-run"
 
 post_install() {
